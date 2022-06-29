@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3 appHeadStyle>Crear Alumno</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" [formGroup]="formStudent" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" formControlName="nombre">
+                            <span class="text-danger"
+                                *ngIf="(formStudent.get('nombre')?.touched || submitted) && formStudent.get('nombre')?.errors?.['required']">
+                                Nombre es requerido
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellido</label>
+                            <input type="text" class="form-control" formControlName="apellido">
+                            <span class="text-danger"
+                                *ngIf="(formStudent.controls['apellido'].touched || submitted) && formStudent.controls['apellido'].errors?.['required']">
+                                Apellido es requerido
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Edad</label>
+                            <input type="text" class="form-control" formControlName="edad">
+                            <span class="text-danger"
+                                *ngIf="formStudent.controls['edad'].touched && formStudent.controls['edad'].errors?.['required']">
+                                Edad es requerido
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
