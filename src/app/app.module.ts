@@ -13,7 +13,7 @@ import { HeadStyleDirective } from './directives/head-style.directive';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'  
-
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { MatTableModule } from '@angular/material/table'
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
