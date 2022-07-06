@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JsonPlaceHolder } from '../models/JsonPlaceHolder';
+import { map, Observable, of, delay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +13,42 @@ export class TareaService {
   ) { 
   }
 
-  getPostJsonPlaceHolder():Promise<JsonPlaceHolder>{
+  getPromiseJsonPlaceHolder():Promise<JsonPlaceHolder>{
     return new Promise<JsonPlaceHolder>((resolve, reject)=>{
-      return this.http.get(`${this.URLSERVICE}`).pipe()
-      .subscribe({
-        complete: ,
-        error: 
+      return this.http.get<JsonPlaceHolder>(`${this.URLSERVICE}`).subscribe({
+        next: (res:JsonPlaceHolder)=>{
+          resolve(res);
+        },
+        error: (err:any)=>{
+          reject(err);
+        }
       });
     })
   }
 
-  UpdateBug(): Observable<JsonPlaceHolder> {
+  getObservableJsonPlaceHolder(): Observable<JsonPlaceHolder> {
     return this.http
       .get<JsonPlaceHolder>(
         this.URLSERVICE
-      )
-      .pipe(retry(1), catchError(this.errorHandl));
+      );
+  }
+
+  getFiltered(users:any, filtered:string){
+    return of(users).pipe(
+      map(c => {
+        if (!filtered) {
+          return c;
+        }
+        const filteredUsers: JsonPlaceHolder[] = [];
+        c.filter(function(user:any) {
+          if (user.userId == filtered) {
+            filteredUsers.push(user);
+          }
+        });
+        
+        return filteredUsers;
+      })
+    );
   }
 
   
