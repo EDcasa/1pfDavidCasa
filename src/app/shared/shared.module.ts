@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeadStyleDirective } from './directives/head-style.directive';
 import { DisplayamePipe } from './pipes/displayame.pipe';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { MaterialModule } from './material/material.module';
 
 
 
@@ -19,7 +20,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
   ],
   exports:[
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ]
 })
 export class SharedModule { }

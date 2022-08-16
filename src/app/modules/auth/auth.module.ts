@@ -5,6 +5,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthRoutingModule } from './auth-routing.module';
 
 
 
@@ -17,7 +18,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }

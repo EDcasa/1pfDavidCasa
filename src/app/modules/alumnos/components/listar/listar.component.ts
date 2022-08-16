@@ -108,10 +108,7 @@ export class ListarComponent implements OnInit, OnDestroy {
   }
 
   applyFilter(event: Event) {
-    console.log("here");
-    
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue)
     if(filterValue != ''){
       this.listPromise = this.sTarea.getFiltered(this.listPromiseAux,filterValue);
     }else{
